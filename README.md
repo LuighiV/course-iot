@@ -9,7 +9,7 @@ Here you can find the examples which will be useful to build up the IoT
 project. In addition to this, the web page for the curse can be find at
 https://course-iot.courses.luighiviton.com.
 
-## Licencia de uso
+## License
 
 Copyright 2022 Luighi Vitón-Zorrilla
 
