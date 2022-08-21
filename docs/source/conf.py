@@ -9,11 +9,11 @@
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
-#
-# import os
-# import sys
-# sys.path.insert(0, os.path.abspath('.'))
 
+import os
+import sys
+
+sys.path.append(os.path.abspath("./_ext"))
 
 # -- Project information -----------------------------------------------------
 
@@ -32,6 +32,7 @@ release = '1.0'
 # ones.
 extensions = [
     'sphinx.ext.autosectionlabel',
+    'google_analytics',
 ]
 
 # Make sure the target is unique
@@ -71,3 +72,6 @@ source_suffix = '.rst'
 
 # The master toctree document.
 master_doc = 'index'
+
+# Add GA tag
+google_analytics_id = os.environ.get('CI_GOOGLE_ANALYTICS_ID', None)
