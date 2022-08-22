@@ -2,7 +2,7 @@
 <svg
    inkscape:export-ydpi="300"
    inkscape:export-xdpi="300"
-   inkscape:export-filename="/home/luighi/LuighiV.github.io/images/banner-es.png"
+   inkscape:export-filename="/home/luighi/course-iot/docs/source/_static/banner-es.png"
    sodipodi:docname="banner-es.svg"
    inkscape:version="1.1.2 (0a00cf5339, 2022-02-04, custom)"
    id="svg8"
@@ -28,17 +28,17 @@
   </defs>
   <sodipodi:namedview
      inkscape:window-maximized="1"
-     inkscape:window-y="35"
-     inkscape:window-x="5"
-     inkscape:window-height="724"
-     inkscape:window-width="1352"
+     inkscape:window-y="30"
+     inkscape:window-x="0"
+     inkscape:window-height="738"
+     inkscape:window-width="1366"
      showgrid="true"
      inkscape:document-rotation="0"
      inkscape:current-layer="layer1"
      inkscape:document-units="mm"
-     inkscape:cy="163.64471"
-     inkscape:cx="442.44681"
-     inkscape:zoom="0.49497475"
+     inkscape:cy="234.35539"
+     inkscape:cx="299.00515"
+     inkscape:zoom="0.24748737"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0.0"
      borderopacity="1.0"
@@ -98,16 +98,16 @@
          transform="translate(0,-7.9375002)"><tspan
            x="125.27424"
            y="103.32512"
-           id="tspan25794">Curso de introducción hacia el Internet </tspan><tspan
+           id="tspan26399">Curso de introducción hacia el Internet </tspan><tspan
            x="125.27424"
            y="115.67235"
-           id="tspan25796">de las cosas (IoT), orientado a todo </tspan><tspan
+           id="tspan26401">de las cosas (IoT), orientado a todo </tspan><tspan
            x="125.27424"
            y="128.01958"
-           id="tspan25798">interesado en aprender las tecnologías </tspan><tspan
+           id="tspan26403">interesado en aprender las tecnologías </tspan><tspan
            x="125.27424"
            y="140.3668"
-           id="tspan25800">que lo integran.</tspan></text>
+           id="tspan26405">que lo integran.</tspan></text>
       <text
          xml:space="preserve"
          style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.87778px;line-height:1.25;font-family:'Noto Sans';-inkscape-font-specification:'Noto Sans Italic';white-space:pre;inline-size:181.642;stroke-width:0.264583"
@@ -116,7 +116,7 @@
          id="text3588"><tspan
            x="125.27424"
            y="103.32512"
-           id="tspan25802">.</tspan></text>
+           id="tspan26407">.</tspan></text>
       <text
          xml:space="preserve"
          style="font-size:8.81944px;line-height:1.25;font-family:'Noto Sans';-inkscape-font-specification:'Noto Sans';stroke-width:0.264583"

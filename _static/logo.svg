@@ -2,16 +2,16 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="41.010418mm"
-   height="41.010414mm"
-   viewBox="0 0 41.010418 41.010414"
+   width="155"
+   height="155"
+   viewBox="0 0 41.010418 41.010418"
    version="1.1"
    id="svg8"
    inkscape:version="1.1.2 (0a00cf5339, 2022-02-04, custom)"
    sodipodi:docname="logo.svg"
    inkscape:export-filename="/home/luighi/course-iot/docs/source/_static/logo.png"
-   inkscape:export-xdpi="299"
-   inkscape:export-ydpi="299"
+   inkscape:export-xdpi="79.27742"
+   inkscape:export-ydpi="79.27742"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -29,7 +29,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.90509668"
-     inkscape:cx="113.24757"
+     inkscape:cx="89.493202"
      inkscape:cy="-11.048543"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
@@ -39,7 +39,9 @@
      inkscape:window-x="0"
      inkscape:window-y="30"
      inkscape:window-maximized="1"
-     inkscape:pagecheckerboard="0">
+     inkscape:pagecheckerboard="0"
+     units="px"
+     height="155px">
     <inkscape:grid
        type="xygrid"
        id="grid4485"
@@ -65,14 +67,14 @@
     <text
        xml:space="preserve"
        style="font-size:31.5108px;line-height:1.25;font-family:'Noto Sans';-inkscape-font-specification:'Noto Sans';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;stroke-width:0.590829"
-       x="29.519449"
-       y="35.01881"
+       x="29.519447"
+       y="35.018814"
        id="text15294"><tspan
          sodipodi:role="line"
          id="tspan15292"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:31.5108px;font-family:'Trebuchet MS';-inkscape-font-specification:'Trebuchet MS';stroke-width:0.590829"
-         x="29.519447"
-         y="35.01881"><tspan
+         x="29.519445"
+         y="35.018814"><tspan
            style="fill:#008080;stroke-width:0.590829"
            id="tspan12562">i</tspan><tspan
            style="fill:#ff0000;stroke-width:0.590829"
