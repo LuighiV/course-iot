@@ -33,6 +33,7 @@ release = '1.0'
 extensions = [
     'sphinx.ext.autosectionlabel',
     'google_analytics',
+    "sphinxext.opengraph",
 ]
 
 # Make sure the target is unique
@@ -75,3 +76,9 @@ master_doc = 'index'
 
 # Add GA tag
 google_analytics_id = os.environ.get('CI_GOOGLE_ANALYTICS_ID', None)
+
+# Add OG metatags
+ogp_site_url = "http://course-iot.courses.luighiviton.com/"
+ogp_image = "http://course-iot.courses.luighiviton.com/_static/banner-es.png"
+ogp_description_length = 300
+ogp_type = "article"
