@@ -45,11 +45,12 @@ Para el curso se emplea la plataforma de hardware ESP32 así como el sensor
 DHT22, LEDs, resistencias, cables, router y plataformas de software para IoT.
 
 
-Colabora con el autor
+Colabora con el curso
 ---------------------
 
 El material de este curso es gratuito. Si consideras de utilidad quizás podrías
-considerar apoyar al autor mediante una donación. :ref:`index:Información del curso`
+considerar apoyar al autor mediante una donación. Para más información, visitar
+la sección :doc:`ayuda al curso </FUNDING>`.
 
 .. toctree::
    :maxdepth: 2
