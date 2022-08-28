@@ -1,8 +1,8 @@
-Patrocinadores
+Ayuda al curso
 ==============
 
 Si consideras que el contenido que se presenta en este curso es de utilidad,
-por favor, considera patrocinar al autor, para mantenerlo actualizado. Puedes
+por favor, considera apoyar al autor, para mantenerlo actualizado. Puedes
 hacerlo desde Sponsors de GiHub en el enlace que se muestra a continuación:
 
 .. raw:: html
