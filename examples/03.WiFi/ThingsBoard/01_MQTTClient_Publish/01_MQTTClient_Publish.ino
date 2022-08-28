@@ -1,10 +1,10 @@
 /*
- * Ejemplo para comunicar MQTTClient con Adafruit
- * Basado en: https://www.mathworks.com/help/thingspeak/use-arduino-client-to-publish-to-a-channel.html
+ * Ejemplo para comunicar con ThingsBoard using generic libraries
  */
 
 #include <WiFi.h>
 #include <PubSubClient.h>
+#include "ArduinoJson.h"
 
 #include "DHT.h"
 
@@ -15,12 +15,14 @@ DHT dht(DHTPIN, DHTTYPE);
 
 #define LED_BUILTIN 2
 
-const char* ssid = "MyWifi";
-const char* password = "jpim6683";
+const char* ssid = "EKV_MOS";
+const char* password = "34042152";
+
+DynamicJsonDocument doc(200);
 
 //MQTT Data
-char mqttUserName[] = "LuighiViton";                        // Cambiar a nombre de usuario de Adafruit
-char mqttPass[] = "9517032f6ed44e7fa082a1ded5333fa4";      // Cambiar a MQTT Key en AIO Key de Adafruit.   
+char mqttUserName[] = "DHT11_DEMO_TOKEN";    // Cambiar a access Token
+char topic[] = "v1/devices/me/telemetry";
 
 static const char alphanum[] ="0123456789"
                               "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -29,30 +31,10 @@ static const char alphanum[] ="0123456789"
 WiFiClient client;   
 
 PubSubClient mqttClient(client); // Inializa la librería.
-const char* server = "io.adafruit.com"; 
+const char* server = "thingsboard.iot.projects.luighiviton.com"; 
 
 unsigned long lastConnectionTime = 0; 
 const unsigned long postingInterval = 5L * 1000L; // Publica datos cada 5 segundos.
-
-void callback(char* topic, byte* payload, unsigned int length) {
-  Serial.print("Message arrived [");
-  Serial.print(topic);
-  Serial.print("] ");
-  String str_payload = "";
-  for (int i = 0; i < length; i++) {
-    str_payload += (char)payload[i];
-    Serial.print((char)payload[i]);
-  }
-  Serial.println();
-
-  if(String(topic).indexOf("led-control")!=-1){
-    if(str_payload.indexOf("ON") != -1){
-      digitalWrite(LED_BUILTIN,LOW);
-    }else{
-      digitalWrite(LED_BUILTIN,HIGH);
-    }
-  }
-}
 
 void reconnect()
 {
@@ -69,11 +51,11 @@ void reconnect()
     clientID[8]='\0';
 
     // Se conecta con broker MQTT.
-    if (mqttClient.connect(clientID,mqttUserName,mqttPass)) 
+    if (mqttClient.connect(clientID,mqttUserName,"")) 
     {
       Serial.println("Conectado a MQTT server");
 
-      String topic = String(mqttUserName)+ "/feeds/course-iot.led-control";
+      String topic = "v1/devices/me/telemetry";
       mqttClient.subscribe(topic.c_str());
     } else 
     {
@@ -111,12 +93,11 @@ void mqttPublishFeed(){
   char t_char[10];
   sprintf(t_char, "%.2f", t);
 
-  String topic1= String(mqttUserName)+ "/feeds/course-iot.humedad";
-  mqttClient.publish(topic1.c_str(), h_char);
-  
-  String topic2= String(mqttUserName)+ "/feeds/course-iot.temperatura";
-  mqttClient.publish(topic2.c_str(), t_char);
-
+  doc["temperature"] = t;
+  doc["humidity"] = h;
+  String buffer;
+  serializeJson(doc, buffer);
+  mqttClient.publish(topic, buffer.c_str());
   
   lastConnectionTime =millis(); // actualiza el valor de conexion
 
@@ -140,7 +121,6 @@ void setup()
   }
   Serial.println(" connected to Wi-Fi");
   mqttClient.setServer(server, 1883);   // Establece los parámetros de servidor MQTT.
-  mqttClient.setCallback(callback);
   dht.begin();
   delay(2000);
 }

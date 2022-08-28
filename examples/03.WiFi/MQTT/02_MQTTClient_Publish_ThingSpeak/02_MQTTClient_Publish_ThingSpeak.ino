@@ -1,39 +1,37 @@
 /*
  * Ejemplo para comunicar MQTTClient con ThingSpeak
  * Basado en: https://www.mathworks.com/help/thingspeak/use-arduino-client-to-publish-to-a-channel.html
+ * Require de credenciales para MQTT obtenidas de Devices->MQTT. 
+ *  Al descargarlo guardar como mqtt_secrets.h en la misma ubicación que este archivo
  */
 
 #include <WiFi.h>
 #include <PubSubClient.h>
+#include "mqtt_secrets.h"
 
 #define BUILTIN_LED 2
 
 #include "DHT.h"
 
-#define DHTPIN 4
+#define DHTPIN 5
 #define DHTTYPE DHT21   // DHT 22  (AM2302), AM2321
 // Inicializa la libreria
 DHT dht(DHTPIN, DHTTYPE);
 
-const char* ssid = "MyWifi";
+const char* ssid = "My ntwk";
 const char* password = "jpim6683";
 
 //MQTT Data
-char mqttUserName[] = "DemoMQTT"; // Usar cualquier nombre
-char mqttPass[] = "TOHQDHXCGN6FXXXX";      // Cambiar a MQTT API Key de Account > MyProfile.   
-char writeAPIKey[] = "G1IU7RK43YXYRXXX";   // Cambiar a clave de escritura API key.
-char readAPIKey[] = "7FRPRA9YZ5382O5X";   // Cambiar a clave de lectura API key.
-long CHANNEL_ID = 881643;                  // Cambiar al número de canal .
+char mqttUserName[] = SECRET_MQTT_USERNAME; // From Devices->MQTT
+char mqttPass[] = SECRET_MQTT_PASSWORD;      // From Devices->MQTT
+char mqttClientID[] = SECRET_MQTT_CLIENT_ID; // From Devices->MQTT (same as username)
+long CHANNEL_ID = 1454821;                  // Cambiar al número de canal .
 int fieldNumber = 2;                       // Número usado para publicar en un solo campo
-
-static const char alphanum[] ="0123456789"
-                              "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                              "abcdefghijklmnopqrstuvwxyz";  // Para la generación aleatoria de client ID.
                               
 WiFiClient client;   
 
 PubSubClient mqttClient(client); // Inicializa la librería.
-const char* server = "mqtt.thingspeak.com"; 
+const char* server = "mqtt3.thingspeak.com"; 
 
 unsigned long lastConnectionTime = 0; 
 const unsigned long postingInterval = 20L * 1000L; // Publica cada 20 segundos.
@@ -60,26 +58,18 @@ void callback(char* topic, byte* payload, unsigned int length) {
 
 void reconnect()
 {
-  char clientID[9];
-  
+
   // Itera hasta reconectarse
   while (!mqttClient.connected()) 
   {
     Serial.print("Intentando una conexion con MQTT...");
-    // Genera ClientID
-    for (int i = 0; i < 8; i++) {
-        clientID[i] = alphanum[random(51)];
-    }
-    clientID[8]='\0';
-
     // Se conecta con el MQTT broker
-    if (mqttClient.connect(clientID,mqttUserName,mqttPass)) 
+    if (mqttClient.connect(mqttClientID,mqttUserName,mqttPass)) 
     {
       Serial.println("Conectado a MQTT server");
       String message = "channels/";
       message += String(CHANNEL_ID);
-      message += "/subscribe/fields/+/";
-      message += readAPIKey;
+      message += "/subscribe/fields/+";
       const char *topicBuffer;
       topicBuffer=message.c_str();
       
@@ -122,7 +112,7 @@ void mqttPublishFeed(){
   Serial.println(msgBuffer);
   
   // Crea una cadena de datos para enviar a ThingSpeak
-  String topicString = "channels/" + String( CHANNEL_ID ) + "/publish/"+String(writeAPIKey);
+  String topicString = "channels/" + String( CHANNEL_ID ) + "/publish";
   const char *topicBuffer;
   topicBuffer = topicString.c_str();
   mqttClient.publish( topicBuffer, msgBuffer );
@@ -142,7 +132,7 @@ void mqttPublishField(int field){
   Serial.println(msgBuffer);
   
   // Crea una cadena de datos para enviar a ThingSpeak en un campo específico
-  String topicString ="channels/" + String( CHANNEL_ID ) + "/publish/fields/field" + String(field) + "/" + String(writeAPIKey);
+  String topicString ="channels/" + String( CHANNEL_ID ) + "/publish/fields/field" + String(field);
   const char *topicBuffer;
   topicBuffer = topicString.c_str();
   mqttClient.publish( topicBuffer, msgBuffer );

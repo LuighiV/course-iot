@@ -5,8 +5,8 @@
 
 #include <WiFi.h>
 
-char ssid[] = "LV_WLAN";
-char pass[] = "IoTKey_12%89*";
+char ssid[] = "EKV_MOS";
+char pass[] = "34042152";
 
 void setup()
 {
@@ -25,10 +25,12 @@ void setup()
 
   Serial.print("Connected, IP address: ");
   Serial.println(WiFi.localIP());
+  Serial.print("Conectado :);");
 }
 
 void loop() {
 
-  Serial.print("Conectado :);");
+
   Serial.println(WiFi.localIP());
+  delay(1000);
 }

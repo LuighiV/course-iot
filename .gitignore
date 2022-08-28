@@ -2,6 +2,9 @@
 docs/build
 libraries
 
+# secrets file
+**/*_secrets.h
+
 # vscode config files
 .vscode
 
